@@ -18,9 +18,7 @@ Run `ng generate service App` to generate `app.service.ts` file to store the log
 
 ## Build and Deploy to GitHub Pages
 
-1. Change `outputPath` value to `"outputPath": "docs,"` in `angulat.json` file.
-
-2. Increase size of the application up to 1mb in `angular.js` to get rid of build warnings:
+1. Increase size of the application up to 1mb in `angular.js` to get rid of build warnings:
 
 ```
 "budgets": [
@@ -37,20 +35,48 @@ Run `ng generate service App` to generate `app.service.ts` file to store the log
 ],
 ```
 
-3. Make sure that `src\index.html` file uses root directory: 
+2. Make sure that `src\index.html` file uses root directory: 
 ```
 <base href="/">
 ```
 
-4. Run `ng build --aot --configuration=production` (command for Angulat 16) to build the project. The build artifacts will be stored in the `docs/` directory.
+3. Setup GitHub Pages
 
-5. Go to `https://github.com/YOUR_USERNAME/YOUR_REPONAME/settings/pages` settings and chosse the `main` branch and `docs` as the source folder and Click 'Save' button:
+https://medium.com/tech-insights/how-to-deploy-angular-apps-to-github-pages-gh-pages-896c4e10f9b4
 
-![GitHub Pages](./src/assets/images/github-pages.png)
+#### First time setup
 
-6. Push your changes to GitHub.
+```
+// create gh-pages branch and switch to it
+git checkout -b gh-pages
 
-7. Check your deployment:
+// push the existing code to gh-pages branch
+git push origin gh-pages
+
+// install 'angular-cli-ghpages' globally
+npm install -g angular-cli-ghpages
+
+// build your angular app with --base-href flag
+ng build --configuration=production --base-href https://[username].github.io/[reponame]/
+
+// push the built code located in dist/[project-name] folder to GitHub Pages
+ngh --dir=dist/[project-name]
+```
+
+*ngh - means angular github pages*
+
+#### Subsequent deploys
+
+```
+ng build --configuration=production --base-href https://[username].github.io/[reponame]/
+ngh --dir=dist/[project-name]
+```
+
+4. Check GitHub Pages Settings of your repo - `https://github.com[username]/[reponame]/settings/pages`. The branch should be `gh-pages` and `root` as the source folder:
+
+![GitHub Pages](./src//assets//images/github-pages.png)
+
+5. Check your deployment:
 
     `https://github.com/YOUR_USERNAM/YOUR_REPONAME/deployments`
 
