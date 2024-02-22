@@ -59,7 +59,7 @@ npm install -g angular-cli-ghpages
 // build your angular app with --base-href flag
 ng build --configuration=production --base-href https://[username].github.io/[reponame]/
 
-// push the built code located in dist/[project-name] folder to GitHub Pages
+// push the built code located in dist/[project-name] folder to GitHub Pages (gh-pages branch)
 ngh --dir=dist/[project-name]
 ```
 
@@ -67,7 +67,11 @@ ngh --dir=dist/[project-name]
 
 #### Subsequent deploys
 
+We make all changes to the source code, subsequent builds and pushes to GitHub Pages (`gh-pages` branch) from the `main` branch:
+
 ```
+git checkout main
+
 ng build --configuration=production --base-href https://[username].github.io/[reponame]/
 
 ngh --dir=dist/[project-name]
