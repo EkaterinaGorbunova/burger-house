@@ -117,7 +117,7 @@
         </div>
         <div class="order-form-inputs" [formGroup]="form">
           <div class="order-form-input" [class]="{'error': form.get('order')?.invalid && (form.get('order')?.dirty || form.get('order')?.touched)}">
-            <input type="text" placeholder="Select your burger from our menu" id="burger" formControlName="order" readonly>
+            <input type="text" placeholder="Select burger from the menu" id="burger" formControlName="order" readonly>
           </div>
           <div class="order-form-input" [class]="{'error': form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)}">
             <input type="text" placeholder="Your name" id="name" formControlName="name">
