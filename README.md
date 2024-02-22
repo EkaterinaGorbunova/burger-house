@@ -69,6 +69,7 @@ ngh --dir=dist/[project-name]
 
 ```
 ng build --configuration=production --base-href https://[username].github.io/[reponame]/
+
 ngh --dir=dist/[project-name]
 ```
 
