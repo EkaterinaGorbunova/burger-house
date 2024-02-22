@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {AppService} from "./app.service";
+// import {AppService} from "./app.service";
 
 @Component({
   selector: 'app-root',
@@ -17,113 +17,115 @@ export class AppComponent {
     phone: ["", Validators.required],
   });
 
-  // productsData = [
-  //   {
-  //     image: "1.png",
-  //     title: "Burger Cheddar & Bacon",
-  //     text: "Crispy beef cutlet, bun, tomato, Cheddar cheese, bacon, red onion, iceberg lettuce, mayonnaise, ketchup, cheese sauce",
-  //     price: 8,
-  //     basePrice: 8,
-  //     grams: 360
-  //   },
-  //   {
-  //     image: "2.png",
-  //     title: "BBQ Bacon and Chicken",
-  //     text: "Brioche bun with sesame seeds, chicken cutlet, cheddar cheese, tomato, pickled cucumber, onion, bacon, BBQ sauce",
-  //     price: 7,
-  //     basePrice: 7,
-  //     grams: 390
-  //   },
-  //   {
-  //     image: "3.png",
-  //     title: "Double Beef Burger",
-  //     text: "Two beef patties, cheddar cheese, romaine lettuce, pickles, fresh tomato, bacon, red onion, burger sauce, mustard",
-  //     price: 10,
-  //     basePrice: 10,
-  //     grams: 420
-  //   },
-  //   {
-  //     image: "4.png",
-  //     title: "Bavarian Burger",
-  //     text: "Burger bun, beef patty, red onion, cheese, hunter sausage, barbecue sauce, cheese sauce, iceberg lettuce",
-  //     price: 7,
-  //     basePrice: 7,
-  //     grams: 220
-  //   },
-  //   {
-  //     image: "5.png",
-  //     title: "Bacon Cheeseburger",
-  //     text: "Burger bun, beef patty, bacon, tomato, pickled cucumber, cheese, cheese sauce, ketchup, greens",
-  //     price: 8,
-  //     basePrice: 8,
-  //     grams: 220
-  //   },
-  //   {
-  //     image: "6.png",
-  //     title: "Indiana Burger",
-  //     text: "Burger bun, chicken patty, bacon, egg, pickled cucumber, crispy onion, ketchup, cheese sauce, mustard, greens",
-  //     price: 9,
-  //     basePrice: 9,
-  //     grams: 320
-  //   },
-  //   {
-  //     image: "7.png",
-  //     title: "Veggie Burger",
-  //     text: "Burger bun, vegetarian patty, red onion, cheese, fresh tomato, barbecue sauce, cheese sauce, iceberg lettuce",
-  //     price: 8,
-  //     basePrice: 8,
-  //     grams: 280
-  //   },
-  //   {
-  //     image: "1.png",
-  //     title: "Burger Cheddar & Bacon",
-  //     text: "Crispy beef cutlet, bun, tomato, Cheddar cheese, bacon, red onion, iceberg lettuce, mayonnaise, ketchup, cheese sauce",
-  //     price: 8,
-  //     basePrice: 8,
-  //     grams: 360
-  //   },
-  //   {
-  //     image: "8.png",
-  //     title: "Whiny Joe Burger",
-  //     text: "Burger bun, beef patty, bacon, tomato, pickled cucumber, red onion, cheese, jalapeño peppers, ketchup, greens",
-  //     price: 7,
-  //     basePrice: 7,
-  //     grams: 380
-  //   },
-  //   {
-  //     image: "9.png",
-  //     title: "Double Cheeseburger",
-  //     text: "Burger bun, two beef patties, double cheddar cheese, pickles, crispy onions, ketchup, cheese sauce, mustard, greens",
-  //     price: 11,
-  //     basePrice: 11,
-  //     grams: 400
-  //   },
-  //   {
-  //     image: "10.png",
-  //     title: "Fresh Burger",
-  //     text: "Burger bun, beef patty, bacon, cheddar cheese, salami, barbecue sauce, cheese sauce, iceberg lettuce, fresh tomato",
-  //     price: 9,
-  //     basePrice: 9,
-  //     grams: 300
-  //   },
-  //   {
-  //     image: "11.png",
-  //     title: "Zucchini Burger",
-  //     text: "Burger bun, vegetarian chickpea patty, grilled zucchini, tomato, pickled cucumber, cheese, mustard sauce, ketchup, greens",
-  //     price: 8,
-  //     basePrice: 8,
-  //     grams: 320
-  //   },
-  // ];
+  productsData = [
+    {
+      image: "1.png",
+      title: "Burger Cheddar & Bacon",
+      text: "Crispy beef cutlet, bun, tomato, Cheddar cheese, bacon, red onion, iceberg lettuce, mayonnaise, ketchup, cheese sauce",
+      price: 8,
+      basePrice: 8,
+      grams: 360
+    },
+    {
+      image: "2.png",
+      title: "BBQ Bacon and Chicken",
+      text: "Brioche bun with sesame seeds, chicken cutlet, cheddar cheese, tomato, pickled cucumber, onion, bacon, BBQ sauce",
+      price: 7,
+      basePrice: 7,
+      grams: 390
+    },
+    {
+      image: "3.png",
+      title: "Double Beef Burger",
+      text: "Two beef patties, cheddar cheese, romaine lettuce, pickles, fresh tomato, bacon, red onion, burger sauce, mustard",
+      price: 10,
+      basePrice: 10,
+      grams: 420
+    },
+    {
+      image: "4.png",
+      title: "Bavarian Burger",
+      text: "Burger bun, beef patty, red onion, cheese, hunter sausage, barbecue sauce, cheese sauce, iceberg lettuce",
+      price: 7,
+      basePrice: 7,
+      grams: 220
+    },
+    {
+      image: "5.png",
+      title: "Bacon Cheeseburger",
+      text: "Burger bun, beef patty, bacon, tomato, pickled cucumber, cheese, cheese sauce, ketchup, greens",
+      price: 8,
+      basePrice: 8,
+      grams: 220
+    },
+    {
+      image: "6.png",
+      title: "Indiana Burger",
+      text: "Burger bun, chicken patty, bacon, egg, pickled cucumber, crispy onion, ketchup, cheese sauce, mustard, greens",
+      price: 9,
+      basePrice: 9,
+      grams: 320
+    },
+    {
+      image: "7.png",
+      title: "Veggie Burger",
+      text: "Burger bun, vegetarian patty, red onion, cheese, fresh tomato, barbecue sauce, cheese sauce, iceberg lettuce",
+      price: 8,
+      basePrice: 8,
+      grams: 280
+    },
+    {
+      image: "1.png",
+      title: "Burger Cheddar & Bacon",
+      text: "Crispy beef cutlet, bun, tomato, Cheddar cheese, bacon, red onion, iceberg lettuce, mayonnaise, ketchup, cheese sauce",
+      price: 8,
+      basePrice: 8,
+      grams: 360
+    },
+    {
+      image: "8.png",
+      title: "Whiny Joe Burger",
+      text: "Burger bun, beef patty, bacon, tomato, pickled cucumber, red onion, cheese, jalapeño peppers, ketchup, greens",
+      price: 7,
+      basePrice: 7,
+      grams: 380
+    },
+    {
+      image: "9.png",
+      title: "Double Cheeseburger",
+      text: "Burger bun, two beef patties, double cheddar cheese, pickles, crispy onions, ketchup, cheese sauce, mustard, greens",
+      price: 11,
+      basePrice: 11,
+      grams: 400
+    },
+    {
+      image: "10.png",
+      title: "Fresh Burger",
+      text: "Burger bun, beef patty, bacon, cheddar cheese, salami, barbecue sauce, cheese sauce, iceberg lettuce, fresh tomato",
+      price: 9,
+      basePrice: 9,
+      grams: 300
+    },
+    {
+      image: "11.png",
+      title: "Zucchini Burger",
+      text: "Burger bun, vegetarian chickpea patty, grilled zucchini, tomato, pickled cucumber, cheese, mustard sauce, ketchup, greens",
+      price: 8,
+      basePrice: 8,
+      grams: 320
+    },
+  ];
 
-  productsData: any;
+  // productsData: any;
 
-  constructor(private fb: FormBuilder, private appService: AppService) {
+  // constructor(private fb: FormBuilder, private appService: AppService) {
+  // }
+  constructor(private fb: FormBuilder) {
   }
 
-  ngOnInit() {
-    this.appService.getData().subscribe(data => this.productsData = data);
-  }
+  // ngOnInit() {
+  //   this.appService.getData().subscribe(data => this.productsData = data);
+  // }
 
   scrollTo(target: HTMLElement, burger?: any) {
     target.scrollIntoView({behavior: "smooth"});
@@ -132,21 +134,27 @@ export class AppComponent {
     }
   }
 
+  // confirmOrder() {
+  //   if (this.form.valid) {
+  //     this.appService.sendOrder(this.form.value)
+  //       .subscribe(
+  //         {
+  //           next: (response: any) => {
+  //             alert(response.message)
+  //             console.log("Thanks for ordering! We will contact you soon!");
+  //             this.form.reset()
+  //           },
+  //           error: (response) => {
+  //             alert(response.error.message);
+  //           },
+  //         }
+  //       );
+  //   }
+  // }
   confirmOrder() {
     if (this.form.valid) {
-      this.appService.sendOrder(this.form.value)
-        .subscribe(
-          {
-            next: (response: any) => {
-              alert(response.message)
-              console.log("Thanks for ordering! We will contact you soon!");
-              this.form.reset()
-            },
-            error: (response) => {
-              alert(response.error.message);
-            },
-          }
-        );
+      alert("Thanks for ordering! We will contact you soon!")
+      this.form.reset()
     }
   }
 
