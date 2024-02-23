@@ -14,7 +14,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Example:
 
-Run `ng generate service App` to generate `app.service.ts` file to store the logic of connecting to the backend there
+Run `ng generate service App` to generate `app.service.ts` file (for ex. to store the logic of connecting to the backend)
 
 ## Build and Deploy to GitHub Pages
 
