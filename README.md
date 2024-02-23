@@ -77,7 +77,14 @@ ng build --configuration=production --base-href https://[username].github.io/[re
 ngh --dir=dist/[project-name]
 ```
 
-*Note:* After deploying to GitHub Pages (`ngh --dir=dist/[project-name]`), it takes some time for the changes to take effect.
+*Example of commands:*
+
+```
+ng build --configuration=production --base-href https://EkaterinaGorbunova.github.io/burger-house/
+ngh --dir=dist/burger-house
+```
+
+Note: After deploying to GitHub Pages (`ngh --dir=dist/[project-name]`), it takes some time for the changes to take effect.
 
 4. Check GitHub Pages Settings of your repo - `https://github.com[username]/[reponame]/settings/pages`. The branch should be `gh-pages` and `root` as the source folder:
 

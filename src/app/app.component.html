@@ -1,4 +1,4 @@
-<section class="main">
+<section class="main" #main>
   <header class="header">
     <div class="container">
       <div class="logo">
@@ -32,7 +32,7 @@
         </p>
         <button class="button" id="main-action-button" (click)="scrollTo(products)">View Menu</button>
       </div>
-      <img src="./assets/images/main_burger.png" alt="Big Burger" class="main-image">
+      <img src="./assets/images/main_burger.png" alt="Big Burger" class="main-image" [ngStyle]="mainImageStyle">
     </div>
   </section>
 
@@ -110,7 +110,7 @@
   <section class="order" id="order" #order>
     <div class="container">
       <div class="order-title common-title">Make Order</div>
-      <img src="./assets/images/order_image.png" alt="Burger in the box" class="order-image">
+      <img src="./assets/images/order_image.png" alt="Burger in the box" class="order-image" [ngStyle]="orderImageStyle">
       <div class="order-form">
         <div class="order-form-text">
           Please fill in all the information, and our manager will contact you to confirm the order.
@@ -118,15 +118,14 @@
         <div class="order-form-inputs" [formGroup]="form">
           <div class="order-form-input"
             [class]="{'error': form.get('order')?.invalid && (form.get('order')?.dirty || form.get('order')?.touched)}">
-            <input type="text" placeholder="Select burger from the menu" id="burger" formControlName="order" readonly>
+            <input type="text" placeholder="Choose your burger" id="burger" formControlName="order" readonly>
           </div>
           <div class="order-form-input"
             [class]="{'error': form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)}">
             <input type="text" placeholder="Your name" id="name" formControlName="name">
           </div>
-          <div class="order-form-input"
-            [class]="{'error': form.get('phone')?.invalid && (form.get('phone')?.dirty || form.get('phone')?.touched)}">
-            <input type="text" placeholder="Your phone" id="phone" formControlName="phone">
+          <div class="order-form-input" [class]="{'error': form.get('phone')?.invalid && (form.get('phone')?.dirty || form.get('phone')?.touched)}">
+            <input type="tel" placeholder="Your phone" id="phone" formControlName="phone">
           </div>
           <button class="button" id="order-action" (click)="confirmOrder()" [disabled]="!form.valid">Make Order</button>
         </div>
@@ -138,8 +137,13 @@
 <footer class="footer">
   <div class="container">
     <div class="logo">
-      <img src="./assets/images/logo.png" alt="Logo">
+      <img src="./assets/images/logo.png" alt="Logo" (click)="scrollTo(main)">
     </div>
     <div class="rights">All rights reserved</div>
   </div>
 </footer>
+
+<div class="loader" [class]="{'showed': loaderShowed}" *ngIf="loader">
+  <lottie-player src="./assets/burger.json" background="transparent" speed="1.5" autoplay></lottie-player>
+</div>
+

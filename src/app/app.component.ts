@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostListener } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 // import {AppService} from "./app.service";
 
@@ -7,9 +7,16 @@ import {FormBuilder, Validators} from "@angular/forms";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
 
-  currency = "$";
+  currency = "$CAD";
+
+  loaderShowed = true;
+  loader =  true;
+
+  orderImageStyle: any;
+  mainImageStyle: any;
 
   form = this.fb.group({
     order: ["", Validators.required],
@@ -123,9 +130,21 @@ export class AppComponent {
   constructor(private fb: FormBuilder) {
   }
 
-  // ngOnInit() {
-  //   this.appService.getData().subscribe(data => this.productsData = data);
-  // }
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(e: MouseEvent) {
+    this.orderImageStyle = {transform: 'translate(-' + ((e.clientX * 0.3) / 8) + 'px,-' + ((e.clientY * 0.3) / 8) + 'px)'};
+    this.mainImageStyle = {transform: 'translate(-' + ((e.clientX * 0.3) / 8) + 'px,-' + ((e.clientY * 0.3) / 8) + 'px)'};
+  }
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.loaderShowed = false;
+    }, 3000);
+    setTimeout(() => {
+      this.loader = false;
+    }, 4000);
+    // this.appService.getData().subscribe(data => this.productsData = data);
+  }
 
   scrollTo(target: HTMLElement, burger?: any) {
     target.scrollIntoView({behavior: "smooth"});
@@ -160,24 +179,32 @@ export class AppComponent {
 
   changeCurrency() {
 
-    let newCurrency = "$";
+    let newCurrency = "$CAD";
     let coefficient = 1;
 
-    if (this.currency === "$") {
-      newCurrency = "₽";
-      coefficient = 92;
-    } else if (this.currency === "₽") {
-      newCurrency = "BYN";
-      coefficient = 3.3;
-    } else if (this.currency === "BYN") {
+    // if (this.currency === "$") {
+    //   newCurrency = "₽";
+    //   coefficient = 92;
+    // } else if (this.currency === "₽") {
+    //   newCurrency = "BYN";
+    //   coefficient = 3.3;
+    // } else if (this.currency === "BYN") {
+    //   newCurrency = "€";
+    //   coefficient = 0.85;
+    // } else if (this.currency === "€") {
+    //   newCurrency = "¥";
+    //   coefficient = 6.7;
+    // } else if (this.currency === "¥") {
+    //   newCurrency = "£";
+    //   coefficient = 0.8;
+    // }
+
+    if (this.currency === "$CAD") {
+      newCurrency = "$USD";
+      coefficient = 0.725;
+    } else if (this.currency === "$USD") {
       newCurrency = "€";
-      coefficient = 0.85;
-    } else if (this.currency === "€") {
-      newCurrency = "¥";
-      coefficient = 6.7;
-    } else if (this.currency === "¥") {
-      newCurrency = "£";
-      coefficient = 0.8;
+      coefficient = 0.6;
     }
     this.currency = newCurrency
 
