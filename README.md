@@ -88,7 +88,7 @@ Note: After deploying to GitHub Pages (`ngh --dir=dist/[project-name]`), it take
 
 4. Check GitHub Pages Settings of your repo - `https://github.com[username]/[reponame]/settings/pages`. The branch should be `gh-pages` and `root` as the source folder:
 
-![GitHub Pages](./src//assets//images/github-pages.png)
+![GitHub Pages](./src/assets/images/github-pages.png)
 
 5. Check your deployment:
 
@@ -97,6 +97,24 @@ Note: After deploying to GitHub Pages (`ngh --dir=dist/[project-name]`), it take
     or
 
     `https://YOUR_USERNAM.github.io/YOUR_REPONAME/`
+
+
+## Deploy to Netlify (with linked GitHub repo)
+
+*Note: No need to exclude `dist` folder from `.gitignore` file*
+
+Base directory: /
+
+Build command `ng build --configuration=production`
+
+Publish directory: `/dist/YOUR_APPNAME`
+
+![GitHub Pages](./src/assets/images/netlify-build-settings.png)
+
+Production branch: `main`
+
+![GitHub Pages](./src/assets/images/netlify-branches-settings.png)
+
 
 ## Further help
 
