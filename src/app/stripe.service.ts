@@ -18,16 +18,21 @@ export class StripeService {
     this.stripe = await loadStripe(environment.stripePublishableKey); // Replace with your Stripe publishable key
   }
 
-  async createPaymentSession(orderData: any, selectedBurger: any) {
+  async createPaymentSession(orderData: any, selectedBurger: any, currentCurrency: string) {
     try {
       const imageUrl = `https://burger-house-express.netlify.app/assets/images/${selectedBurger.image}`;
       
+      const stripeCurrency = currentCurrency === "$CAD" ? "cad" 
+      : currentCurrency === "$USD" ? "usd"
+      : currentCurrency === "€" ? "eur"
+      : "cad";
+
       const session: any = await lastValueFrom(
         this.http.post(`${environment.apiUrl}/create-checkout-session`, {
           items: [{
             name: orderData.order,
             amount: this.extractPrice(orderData.order),
-            currency: 'cad',
+            currency: stripeCurrency,
             product_data: {
               images: [imageUrl]
             }

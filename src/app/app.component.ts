@@ -194,7 +194,7 @@ export class AppComponent {
           throw new Error('Selected burger not found');
         }
         
-        await this.stripeService.createPaymentSession(this.form.value, selectedBurger);
+        await this.stripeService.createPaymentSession(this.form.value, selectedBurger, this.currency);
         // The user will be redirected to Stripe Checkout
       } catch (error) {
         alert('Payment failed. Please try again.');
