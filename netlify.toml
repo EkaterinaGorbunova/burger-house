@@ -1,0 +1,16 @@
+[build]
+  command = "ng build --configuration=production"
+  publish = "dist/burger-house"
+
+[functions]
+  directory = "backend"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

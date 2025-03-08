@@ -23,7 +23,7 @@ export class StripeService {
       const imageUrl = `https://burger-house-express.netlify.app/assets/images/${selectedBurger.image}`;
       
       const session: any = await lastValueFrom(
-        this.http.post('/api/create-checkout-session', {
+        this.http.post(`${environment.apiUrl}/create-checkout-session`, {
           items: [{
             name: orderData.order,
             amount: this.extractPrice(orderData.order),

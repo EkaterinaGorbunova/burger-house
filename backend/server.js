@@ -8,6 +8,7 @@ if (!process.env.STRIPE_SECRET_KEY) {
 const express = require('express');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const cors = require('cors');
+const serverless = require('serverless-http');
 const app = express();
 
 // Array of allowed origins
@@ -69,11 +70,17 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Health check available at http://localhost:${PORT}/api/health`);
-});
+// For dev environment
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Health check available at http://localhost:${PORT}/api/health`);
+  });
+}
+
+// For Netlify Functions
+module.exports.handler = serverless(app);
 
 // Error handling
 process.on('unhandledRejection', (reason, promise) => {
