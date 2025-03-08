@@ -1,6 +1,6 @@
 import {Component, HostListener } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-// import {AppService} from "./app.service";
+import { StripeService } from './stripe.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,6 @@ import {FormBuilder, Validators} from "@angular/forms";
 export class AppComponent {
 
   currency = "$CAD";
-
   loaderShowed = true;
   loader =  true;
 
@@ -125,10 +124,10 @@ export class AppComponent {
 
   // productsData: any;
 
-  // constructor(private fb: FormBuilder, private appService: AppService) {
-  // }
-  constructor(private fb: FormBuilder) {
-  }
+  constructor(
+    private fb: FormBuilder,
+    private stripeService: StripeService,
+  ) {}
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
@@ -170,10 +169,37 @@ export class AppComponent {
   //       );
   //   }
   // }
-  confirmOrder() {
+  // confirmOrder() {
+  //   if (this.form.valid) {
+  //     alert("Thanks for ordering! We will contact you soon!")
+  //     this.form.reset()
+  //   }
+  // }
+
+  async confirmOrder() {
     if (this.form.valid) {
-      alert("Thanks for ordering! We will contact you soon!")
-      this.form.reset()
+      try {
+        const orderName = this.form.value.order as string;
+        
+        if (!orderName) {
+          throw new Error('No order selected');
+        }
+
+        const selectedBurger = this.productsData.find(
+          burger => orderName?.includes(burger.title)
+        );
+
+        // Check if burger was found
+        if (!selectedBurger) {
+          throw new Error('Selected burger not found');
+        }
+        
+        await this.stripeService.createPaymentSession(this.form.value, selectedBurger);
+        // The user will be redirected to Stripe Checkout
+      } catch (error) {
+        alert('Payment failed. Please try again.');
+        console.error(error);
+      }
     }
   }
 
